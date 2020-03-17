@@ -12,6 +12,23 @@
             <h2>Made with &hearts; by Shrey Ravi</h2>
             <div class="controls">
                 <!--<button onclick="resize()" type="button">Resize Board</button>-->
+                <label for="rule-select">Pick Rule Preset: </label>
+                <select onchange="changeRulesetViaSelect()" id="rule-select">
+                    <option value="B1357/S1357">Replicator</option>
+                    <option value="B2/S">Seeds</option>
+                    <option value="B25/S4">B25/S4</option>
+                    <option value="B3/S012345678">Life without Death</option>
+                    <option value="B3/S23" selected>Game of Life</option>
+                    <option value="B34/S34">34 Life</option>
+                    <option value="B35678/S5678">Diamoeba</option>
+                    <option value="B36/S125">2x2</option>
+                    <option value="B36/S23">HighLife</option>
+                    <option value="B3678/S34678">Day & Night</option>
+                    <option value="B368/S245">Morley</option>
+                    <option value="B4678/S35678">Anneeal</option>
+                </select> OR
+                <label for="rule-input"> Custom Ruleset:</label> <input id="rule-input" type="text" value="B3/S23" /> <input type="button" onclick="changeRulesetViaText()" value="Edit Ruleset"/> 
+                <br />
                 <button onclick="randomize()" type="button">Restart Simulation</button>
                 <label id="pop-label" for="pop-range">Population Density(45/100): </label>
                 <input type="range" min="0" max="100" value="45" id="pop-range" onchange="changePopulationDensity()" />
@@ -29,9 +46,9 @@
             <hr />
             <div class="board" id="board"></div>
             <hr />
-            <small>The rules of Conway's Game of Life are simple <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">(see Wikipedia)</a>. Two variables I've added are Population Density (which affects how populated the random seed is) and FPS.</small>
+            <small>The rules of Conway's Game of Life is simple <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">(see Wikipedia)</a>. You can understand what Rulesets are <a href="https://en.wikipedia.org/wiki/Life-like_cellular_automaton">here</a>. Two variables I've added are Population Density (which affects how populated the random seed is) and FPS.</small>
             <hr />
-            <small>Copyright &copy; Shrey Ravi 2020 / <a href="https://www.shreyravi.com">Go Home</a></small>
+            <small>v2.0 / Copyright &copy; Shrey Ravi 2020 / <a href="https://www.shreyravi.com">Go Home</a></small>
         </div>
     </body>
 </html>

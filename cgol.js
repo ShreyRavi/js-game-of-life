@@ -8,6 +8,8 @@ let gridLinesChecked = true;
 let color = 'black';
 let population_density = 0.45;
 let FPS = 10;
+let B = [3];
+let S = [2,3];
 var RUNNING;
 
 //initiate 2D array to store universe
@@ -82,11 +84,11 @@ function updateUniverse() {
             let num_neighbors = getNumNeighbors(outer, inner);
 
             //RULE 1: Any live cell with 2/3 neighbors survives
-            if ((universe[outer][inner] == true) && ((num_neighbors == 2) || (num_neighbors == 3))) {
+            if ((universe[outer][inner] == true) && (S.includes(num_neighbors))) {
                 new_universe[outer][inner] = 1;
             }
             //RULE 2: Any dead cell with 3 living neighbors is born
-            else if ((universe[outer][inner] == 0) && (num_neighbors == 3)) {
+            else if ((universe[outer][inner] == 0) && (B.includes(num_neighbors))) {
                 new_universe[outer][inner] = 1;
             }
             //RULE 3: Any other living cells will die, dead cells will stay dead
@@ -226,4 +228,38 @@ function randomize() {
             universe[outer][inner] = 1 ? Math.random() <= population_density : 0;
         }
     }
+}
+
+//ruleset logic
+function changeRulesetViaSelect() {
+    changeRuleset(document.getElementById("rule-select").value);
+    document.getElementById("rule-input").value = document.getElementById("rule-select").value;
+}
+
+function changeRulesetViaText() {
+    var txt = document.getElementById("rule-input").value;
+    if ((txt.indexOf("/") == -1) || (txt.indexOf("B") == -1) || (txt.indexOf("S") == -1)) {
+        alert("error: incorrect input to ruleset!");
+        return;
+    }
+    changeRuleset(txt);
+}
+
+function changeRuleset(rlst) {
+    var newB = rlst.split("/")[0].replace(/\D/g,'');
+    var newS = rlst.split("/")[1].replace(/\D/g,'');
+
+    B = []
+    S = []
+
+    var i;
+    for (i = 0; i < newB.length; i++) {
+        B.push(parseInt(newB.charAt(i)));
+    }
+
+    for (i = 0; i < newS.length; i++) {
+        S.push(parseInt(newS.charAt(i)));
+    }
+
+    randomize();
 }
