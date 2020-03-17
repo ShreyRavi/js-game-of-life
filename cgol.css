@@ -1,0 +1,45 @@
+/*
+cgol.css
+the main styling .css file for the Conway's Game of Life, taken from the etch-a-sketch board
+Made with <3 by Shrey Ravi
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    background: linear-gradient(275deg, #ba0404, #d337f0, #c3d862);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 27s ease infinite;
+    -moz-animation: AnimationName 27s ease infinite;
+    animation: AnimationName 27s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:88% 0%}
+        50%{background-position:13% 100%}
+        100%{background-position:88% 0%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:88% 0%}
+        50%{background-position:13% 100%}
+        100%{background-position:88% 0%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:88% 0%}
+        50%{background-position:13% 100%}
+        100%{background-position:88% 0%}
+    }
+}
+
+.app {
+    max-width: 640px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.board {
+    display: grid;
+    max-width: 640px;
+}

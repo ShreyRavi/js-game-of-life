@@ -1,0 +1,37 @@
+<!--Conway's Game of Life Implementation in JS - Shrey Ravi-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="cgol.js"></script>
+        <link rel="stylesheet" type="text/css" href="cgol.css">
+        <title>Conway's Game of Life - Shrey Ravi</title>
+    </head>
+    <body onload="startup()">
+        <div id="app" class="app">
+            <h1>Conway's Game of Life</h1>
+            <h2>Made with &hearts; by Shrey Ravi</h2>
+            <div class="controls">
+                <!--<button onclick="resize()" type="button">Resize Board</button>-->
+                <button onclick="randomize()" type="button">Restart Simulation</button>
+                <label id="pop-label" for="pop-range">Population Density(45/100): </label>
+                <input type="range" min="0" max="100" value="45" id="pop-range" onchange="changePopulationDensity()" />
+                <!--<button onclick="clearScreen()" type="button">Clear Board</button>--> <br />
+                <label for="color-select">Color: </label>
+                <select onchange="colorChange()" id="color-select">
+                    <option value="black">Black</option>
+                    <option value="random">Random</option>
+                </select>
+                <label id="fps-label" for="fps-range">FPS(10): </label>
+                <input type="range" min="1" max="120" value="10" id="fps-range" onchange="changeFPS()" />
+                <label for="grid-lines-checkbox">Grid Lines? </label>
+                <input type="checkbox" onchange="gridLinesChange()" id="grid-lines-checkbox" value="GridLines" checked></input>
+            </div>
+            <hr />
+            <div class="board" id="board"></div>
+            <hr />
+            <small>The rules of Conway's Game of Life is simple <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">(see Wikipedia)</a>. Two variables I've added are Population Density (which affects how populated the random seed is) and FPS.</small>
+            <hr />
+            <small>Copyright &copy; Shrey Ravi 2020 / <a href="https://www.shreyravi.com">Go Home</a></small>
+        </div>
+    </body>
+</html>
